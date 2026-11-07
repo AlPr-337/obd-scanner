@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Поддержка OBDScanner · OBDScanner Support</title>
+  <meta name="description" content="Поддержка OBDScanner для iPhone. Подключение BLE-адаптера, история проверок и связь с разработчиком.">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #f5f7fb;
+      --surface: #fff;
+      --text: #1d2b4a;
+      --muted: #4d5d76;
+      --line: #d8e0ed;
+      --accent: #1455b8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font: 1rem / 1.6 system-ui, sans-serif;
+    }
+    .container { width: min(100% - 2rem, 44rem); margin-inline: auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem 1rem;
+      padding-block: .8rem;
+    }
+    nav { display: flex; gap: 1rem; }
+    main { padding-block: 1rem 3rem; }
+    .language { scroll-margin-top: 4.5rem; }
+    @supports selector(:has(*)) {
+      main:not(:has(#en:target)) #en,
+      main:has(#en:target) #ru { display: none; }
+    }
+    h1, h2 { line-height: 1.25; }
+    h1 { font-size: clamp(1.85rem, 6vw, 2.4rem); margin: 1rem 0 .45rem; }
+    h2 { font-size: 1.25rem; margin: 1.5rem 0 .5rem; }
+    p { margin: .45rem 0; }
+    ol { margin: .5rem 0 0; padding-inline-start: 1.5rem; }
+    li + li { margin-top: .35rem; }
+    a { color: var(--accent); text-underline-offset: .18em; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .lead, .hint { color: var(--muted); }
+    .contact, .faq { background: var(--surface); border: 1px solid var(--line); border-radius: 1rem; }
+    .contact { margin-top: 1.35rem; padding: 1rem 1.2rem; }
+    .contact h2 { margin-top: 0; }
+    .contact a { font-weight: 650; overflow-wrap: anywhere; }
+    details { padding: .85rem 1.2rem; }
+    details + details { border-top: 1px solid var(--line); }
+    summary { cursor: pointer; font-weight: 650; }
+    .policy { margin-top: 1.3rem; }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #121a2a;
+        --surface: #1b2538;
+        --text: #eef3fb;
+        --muted: #bac7dc;
+        --line: #3a485e;
+        --accent: #9ac4ff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container bar">
+      <strong>OBDScanner</strong>
+      <nav aria-label="Язык / Language">
+        <a href="#ru" lang="ru">Русский</a>
+        <a href="#en" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="language" id="ru" lang="ru" aria-labelledby="title-ru">
+      <h1 id="title-ru">Поддержка OBDScanner</h1>
+      <p class="lead">Помощь с приложением для iPhone, подключением адаптера и историей проверок.</p>
+
+      <section class="contact" aria-labelledby="contact-ru">
+        <h2 id="contact-ru">Написать в поддержку</h2>
+        <p><a href="mailto:alexei.pritchin@gmail.com?subject=OBDScanner%20iOS">alexei.pritchin@gmail.com</a></p>
+        <p>Укажите модель iPhone, версии iOS и OBDScanner, модель адаптера и шаг, на котором возникла проблема. Если приложение показало ошибку, скопируйте её текст.</p>
+        <p class="hint">Для первого обращения достаточно этих сведений. Полный VIN и диагностические журналы не нужны.</p>
+      </section>
+
+      <h2>Частые вопросы</h2>
+      <div class="faq">
+        <details open>
+          <summary>Какой адаптер нужен?</summary>
+          <p>Для iPhone нужен совместимый адаптер OBD-II с Bluetooth Low Energy (BLE) и автомобиль с поддержкой OBD-II. Перед покупкой проверьте, что в характеристиках адаптера указан BLE.</p>
+        </details>
+        <details>
+          <summary>Что делать, если адаптер не найден?</summary>
+          <ol>
+            <li>Проверьте питание адаптера и следуйте инструкциям автомобиля и адаптера по включению зажигания.</li>
+            <li>Включите Bluetooth на iPhone. Проверьте доступ OBDScanner в разделе «Настройки → Конфиденциальность и безопасность → Bluetooth».</li>
+            <li>Если адаптер занят другим диагностическим приложением, отключите его там. В OBDScanner выберите «Новое сканирование», затем «Найти адаптер».</li>
+          </ol>
+        </details>
+        <details>
+          <summary>Почему часть данных отсутствует?</summary>
+          <p>Приложение показывает данные, которые вернул автомобиль. Доступность кодов, мониторов готовности и параметров зависит от автомобиля, блока управления и адаптера.</p>
+        </details>
+        <details>
+          <summary>Как открыть, отправить или удалить результат?</summary>
+          <p>На главном экране откройте «История проверок» и выберите сохранённый результат. Его можно открыть без подключения к автомобилю. Внизу результата доступны действия «Поделиться» и «Удалить».</p>
+        </details>
+      </div>
+
+      <p class="policy"><a href="https://alpr-337.github.io/obd-scanner/">Политика конфиденциальности</a></p>
+    </section>
+
+    <section class="language" id="en" lang="en" aria-labelledby="title-en">
+      <h1 id="title-en">OBDScanner Support</h1>
+      <p class="lead">Get help with the iPhone app, adapter connections, and scan history.</p>
+
+      <section class="contact" aria-labelledby="contact-en">
+        <h2 id="contact-en">Contact support</h2>
+        <p><a href="mailto:alexei.pritchin@gmail.com?subject=OBDScanner%20iOS">alexei.pritchin@gmail.com</a></p>
+        <p>Include your iPhone model, iOS and OBDScanner versions, adapter model, and the step where the problem occurred. If the app showed an error, copy its text.</p>
+        <p class="hint">These details are enough for an initial request. You do not need to include your full VIN or diagnostic logs.</p>
+      </section>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>Which adapter do I need?</summary>
+          <p>You need a compatible Bluetooth Low Energy (BLE) OBD-II adapter and an OBD-II compatible vehicle. Check the adapter specifications for BLE before buying.</p>
+        </details>
+        <details>
+          <summary>What if my adapter is missing?</summary>
+          <ol>
+            <li>Make sure the adapter has power and follow the vehicle and adapter instructions for turning on the ignition.</li>
+            <li>Turn on Bluetooth on your iPhone. Check that OBDScanner has access in Settings → Privacy &amp; Security → Bluetooth.</li>
+            <li>If another diagnostic app is using the adapter, disconnect it there. In OBDScanner, choose New scan, then Find adapter.</li>
+          </ol>
+        </details>
+        <details>
+          <summary>Why are some readings missing?</summary>
+          <p>The app displays the data returned by the vehicle. Available codes, readiness monitors, and readings depend on the vehicle, control unit, and adapter.</p>
+        </details>
+        <details>
+          <summary>How do I reopen, share, or delete a scan?</summary>
+          <p>From the home screen, open Scan history and select a saved result. You can reopen it without connecting to the vehicle. The Share and Delete actions are at the bottom of the result.</p>
+        </details>
+      </div>
+
+      <p class="policy"><a href="https://alpr-337.github.io/obd-scanner/">Privacy Policy</a></p>
+    </section>
+  </main>
+</body>
+</html>
